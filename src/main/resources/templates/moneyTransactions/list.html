@@ -1,0 +1,42 @@
+
+<html layout:decorator="layout">
+
+<div layout:fragment="content">
+
+    <a class="btn btn-primary" href="/moneyTransactions/new">Add new money trans</a>
+
+    <table class="table table-striped" id="moneyTransactions_list">
+        <thead>
+        <tr>
+            <th>amount</th>
+            <th>description</th>
+            <th>delete</th>
+            <th>edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="moneyTransaction : ${moneyTransactions}">
+            <td class="message" data-th-text="${moneyTransaction.amount}"></td>
+            <td class="message" data-th-text="${moneyTransaction.description}"></td>
+            <td>
+                <a th:href="@{'/moneyTransactions/{id}/delete'(id=${moneyTransaction.moneyTransactionId})}" class="delete" th:attr="name=${moneyTransaction.amount}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{'/moneyTransactions/{id}/edit'(id=${moneyTransaction.moneyTransactionId})}" class="edit" th:attr="name=${moneyTransaction.amount}">
+                    <span class="fa-stack">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </span>
+
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</html>
