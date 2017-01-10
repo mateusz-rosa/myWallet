@@ -1,9 +1,6 @@
 package com.mywallet.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,8 +10,14 @@ public class MoneyTransaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long moneyTransactionId;
     private float amount;
+    @Temporal(TemporalType.DATE)
     private Date date;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 
     public MoneyTransaction(){
     }
@@ -22,6 +25,20 @@ public class MoneyTransaction {
     public MoneyTransaction(float amount, String description){
         this.amount = amount;
         this.description = description;
+    }
+
+    public MoneyTransaction(float amount, String description, Category category){
+        this.amount = amount;
+        this.description = description;
+        setCategory(category);
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public long getMoneyTransactionId() {

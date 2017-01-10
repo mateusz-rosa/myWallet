@@ -1,25 +1,27 @@
-<html layout:decorator="layout">
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
     <div layout:fragment="content">
         <form method="post" name="amount_form" id="amount_form" action="/moneyTransactions/create" role="form">
-            <div class="form-group">
+            <div class="col-md-5 form-group">
                 <label for="amount">amount</label>
-                <textarea rows="1" class="col-md-5 form-control" id="amount" name="amount"/>
-                <label for="amount">desc</label>
-                <textarea rows="1" class="col-md-5 form-control" id="decription" name="decription"/>
+                <textarea rows="1" class="col-md-4 form-control" id="amount" name="amount" />
+
+            </div>
+            <div class="col-md-5 form-group">
+                <label for="amount">Opis</label>
+                <textarea rows="1" class="col-md-4 form-control" id="decription" name="decription"/>
             </div>
 
+            <div class="col-lg-4 col-md-4 form-group">
+                <label for="moneyTransaction.getCategory().getCategoryName()">Select :</label>
+                <select class="form-control" id="moneyTransaction.getCategory().getCategoryName()">
+
+                    <option th:each="p : ${categoryList}" th:value="${p.categoryId}"  th:text="${p.nameOfCategory}"></option>
 
 
-            <!--<div class="form-group">-->
-                <!--<label for="amount">Name:</label>-->
-                <!--<input type="textarea" class="form-control" id="amount" name="amount">-->
-            <!--</div>-->
+                </select>
 
-            <!--<div class="form-group">-->
-                <!--<label for="description">Password:</label>-->
-                <!--<input type="textarea" class="form-control" id="description" name="description">-->
-            <!--</div>-->
-
+            </div>
 
             <button type="submit" id="submit" class="btn btn-primary">Submit</button>
         </form>

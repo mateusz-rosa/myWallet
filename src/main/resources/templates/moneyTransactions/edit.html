@@ -1,9 +1,13 @@
 <html layout:decorator="layout">
     <div layout:fragment="content">
         <form method="post" name="comment_form" id="comment_form" action="/moneyTransactions/update" role="form">
-            <div class="form-group">
+            <div class="col-md-5 form-group">
                 <label for="amount">money transactions</label>
                 <textarea rows="5" class="form-control" id="amount" name="amount" th:text="${moneyTransaction.amount}"/>
+            </div>
+            <div class="col-md-5 form-group">
+                <label for="description">description</label>
+                <textarea rows="5" class="form-control" id="description" name="description" th:text="${moneyTransaction.description}"/>
             </div>
             <input type="hidden" id="id" rows="5" class="form-control" name="id" th:value="${moneyTransaction.moneyTransactionId}"/>
             <button type="submit" id="submit" class="btn btn-primary">Submit</button>

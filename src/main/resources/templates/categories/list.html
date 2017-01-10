@@ -1,0 +1,38 @@
+
+<html layout:decorator="layout">
+
+<div layout:fragment="content">
+
+    <a class="btn btn-primary" href="/categories/new">Dodaj kategorię</a>
+
+    <table class="table table-striped" id="categories_list">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Usuń</th>
+            <th>Edytuj</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="category : ${categories}">
+            <td class="message" data-th-text="${category.nameOfCategory}"></td>
+            <td>
+                <a th:href="@{'/categories/{id}/delete'(id=${category.categoryId})}" class="delete" th:attr="name=${category.nameOfCategory}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{'/categories/{id}/edit'(id=${category.categoryId})}" class="edit" th:attr="name=${category.nameOfCategory}">
+                    <span class="fa-stack">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

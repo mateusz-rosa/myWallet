@@ -1,0 +1,12 @@
+<html layout:decorator="layout">
+    <div layout:fragment="content">
+        <form method="post" name="comment_form" id="comment_form" action="/categories/update" role="form">
+            <div class="col-md-5 form-group">
+                <label for="nameOfCategory">Kategoria</label>
+                <textarea rows="1" class="form-control" id="nameOfCategory" name="nameOfCategory" th:text="${category.nameOfCategory}"/>
+            </div>
+            <input type="hidden" id="id" rows="5" class="form-control" name="id" th:value="${category.categoryId}"/>
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</html>

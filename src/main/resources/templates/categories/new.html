@@ -1,0 +1,13 @@
+<html layout:decorator="layout">
+    <div layout:fragment="content">
+        <form method="post" name="nameOfCategory_form" id="nameOfCategory_form" action="/categories/create" role="form">
+            <div class="col-md-5 form-group">
+                <label for="nameOfCategory">Nazwa kategorii</label>
+                <textarea rows="1" class="col-md-5 form-control" id="nameOfCategory" name="nameOfCategory"/>
+
+            </div>
+
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</html>
